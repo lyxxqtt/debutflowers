@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="flower.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <script src="flower.js"></script>
-    <title>flowers</title>
+    <title>flowers4u</title>
 </head>
 
-<div id="message-container">
-    <div id="initial-message">Happy-Happy Birthday po BEBI kooo, Flowers for u.</div>
-    <div id="continue-message" style="display: none;">Continue</div> <!-- Hidden Continue message -->
-</div>
+<audio autoplay loop style="display: none;" id="background-music">
+  <source src="18.MP3" type="audio/mpeg"> <!-- Replace with your audio file path -->
+</audio>
 
+<div id="message-container">
+  <div id="initial-message" onclick="redirectToWebsite()" style="display: none;">
+    Click me
+  </div>
 <body class="container">
 
 
@@ -316,4 +319,11 @@
       </div>
     </div>
   </body>
+
+  <script>
+    // Set the audio volume to 40% when it's ready to play
+    document.getElementById('background-music').oncanplaythrough = function() {
+      document.getElementById('background-music').volume = 0.4;
+    };
+  </script>
 </html>

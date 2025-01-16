@@ -67,15 +67,15 @@ body {
   }
   
   #initial-message {
+    opacity: 0; /* Initially invisible */
     position: absolute;
-    top: -794px;
+    top: -500px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(30px); /* Start below its final position */
     font-size: 24px;
     font-family: 'Courier New', monospace;
     color: #ff6b6b;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: lovePulse 1.5s infinite;
     z-index: 2;
     text-align: center;
     padding: 10px 20px;
@@ -83,8 +83,10 @@ body {
     border-radius: 8px;
     background-color: rgba(255, 240, 240, 0.8);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 1s ease, transform 1s ease; /* Smooth transition for opacity and position */
+    animation: lovePulse 1.5s infinite; /* Pulsing animation */
   }
-
+  
   @keyframes lovePulse {
     0%, 100% {
       transform: translateX(-50%) scale(1);
@@ -95,6 +97,7 @@ body {
       opacity: 0.8;
     }
   }
+  
 
   #continue-message {
 
