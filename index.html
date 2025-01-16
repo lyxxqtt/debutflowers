@@ -10,8 +10,8 @@
     <title>flowers4u</title>
 </head>
 
-<audio autoplay loop style="display: none;" id="background-music">
-  <source src="18.MP3" type="audio/mpeg"> <!-- Replace with your audio file path -->
+<audio loop style="display: none;" id="background-music">
+  <source src="18.MP3" type="audio/mpeg">
 </audio>
 
 <div id="message-container">
@@ -321,14 +321,14 @@
   </body>
 
   <script>
-// Set the audio volume to 40% when it's ready to play
-        document.getElementById('background-music').oncanplaythrough = function() {
- // Set the audio volume to 40% when it's ready to play
- document.getElementById('background-music').oncanplaythrough = function() {
-            document.getElementById('background-music').volume = 0.4;
-        };
+document.body.addEventListener('click', function() {
+            var audio = document.getElementById('background-music');
+            if (audio.paused) {
+                audio.muted = false;  // Unmute the audio
+                audio.play();         // Play the audio
+            }
+        });
 
-        // Unmute the audio when the user clicks anywhere
         // Function to show the message after 5 seconds
         function showMessage() {
             setTimeout(function() {
@@ -338,30 +338,20 @@
                 message.style.display = 'block'; // Ensure the message is displayed
             }, 5000); // 5000ms = 5 seconds
         }
+
         // Function to handle redirect after clicking the message
         function redirectToWebsite() {
-            // Get the current playback time of the audio
             let audio = document.getElementById('background-music');
             let currentTime = audio.currentTime; // Store the current time of the audio
-            // Save audio playing state and time to localStorage
             localStorage.setItem('audioPlaying', 'true');
             localStorage.setItem('audioCurrentTime', currentTime); // Save the time
-            // Redirect to letter.htm
             window.location.href = 'letter.htm';
         }
-        // Add an event listener to unmute audio on any user interaction (e.g., clicking anywhere)
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById('background-music');
-            if (audio.muted) {
-                audio.muted = false;  // Unmute the audio
-                audio.muted = false; // Unmute the audio
-                audio.play(); // Play the audio
-            }
-        });
+
         // Call showMessage when the page loads
         window.onload = function() {
             showMessage(); // Display message after 5 seconds
             document.body.classList.remove("container"); // Remove "container" class from the body
-        }};
+        };
   </script>
 </html>
