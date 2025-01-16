@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="flower.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <script src="flower.js"></script>
-    <title>flowers</title>
+    <title>flowers4u</title>
 </head>
 
-<div id="message-container">
-    <div id="initial-message">Happy-Happy Birthday po BEBI kooo, Flowers for u.</div>
-    <div id="continue-message" style="display: none;">Continue</div> <!-- Hidden Continue message -->
-</div>
+<audio loop style="display: none;" id="background-music">
+  <source src="18.MP3" type="audio/mpeg">
+</audio>
 
+<div id="message-container">
+  <div id="initial-message" onclick="redirectToWebsite()" style="display: none;">
+    Click me
+  </div>
 <body class="container">
 
 
@@ -316,4 +319,56 @@
       </div>
     </div>
   </body>
+
+  <script>
+// Function to play the sound and manage redirect
+function playSoundAndRedirect() {
+    var audio = document.getElementById('background-music');
+    var currentTime = localStorage.getItem('audioCurrentTime'); // Get the saved time from localStorage
+
+    if (currentTime) {
+        audio.currentTime = currentTime; // Resume from saved time
+    }
+
+    // Play the audio
+    audio.play();
+}
+
+// Function to handle redirect after clicking the message
+function redirectToWebsite() {
+    var audio = document.getElementById('background-music');
+    var currentTime = audio.currentTime; // Get the current time of the audio
+    localStorage.setItem('audioPlaying', 'true');  // Save that audio is playing
+    localStorage.setItem('audioCurrentTime', currentTime); // Save the current time of the audio
+
+    // Redirect to the next page
+    window.location.href = 'letter.htm';
+}
+
+// Show message after a delay
+function showMessage() {
+    setTimeout(function() {
+        let message = document.getElementById('initial-message');
+        message.style.opacity = '1'; // Make it fully visible
+        message.style.transform = 'translateX(-50%) translateY(0)'; // Move the message to its final position
+        message.style.display = 'block'; // Ensure the message is displayed
+    }, 5000); // 5000ms = 5 seconds
+}
+
+// Check if the audio should resume playing when the page loads
+window.onload = function() {
+    playSoundAndRedirect();
+    showMessage(); // Show message after 5 seconds
+    document.body.classList.remove("container"); // Remove "container" class from the body
+};
+
+// Event listener to handle audio play when the body is clicked
+document.body.addEventListener('click', function() {
+    var audio = document.getElementById('background-music');
+    if (audio.paused) {
+        audio.muted = false;  // Unmute the audio
+        audio.play();         // Play the audio
+    }
+});
+  </script>
 </html>

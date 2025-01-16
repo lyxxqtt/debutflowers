@@ -12,7 +12,6 @@
   <!-- Audio element with autoplay, hidden, and volume set to 40% -->
   <audio autoplay loop style="display: none;" id="background-music">
     <source src="18.MP3" type="audio/mpeg"> <!-- Replace with your audio file path -->
-  
     Your browser does not support the audio element.
   </audio>
 </body>
@@ -29,7 +28,7 @@
       
       // If the saved time is valid, resume from that point
       if (savedTime && !isNaN(savedTime)) {
-        audio.currentTime = savedTime; // Set the audio to the saved time
+        audio.currentTime = parseFloat(savedTime); // Set the audio to the saved time
       }
       
       // Play the audio
