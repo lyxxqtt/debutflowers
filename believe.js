@@ -1,6 +1,3 @@
-
-
-
 const wrapper = document.querySelector(".wrapper");
 const question = document.querySelector(".question");
 const gif = document.querySelector(".gif");
@@ -16,9 +13,9 @@ yesBtn.addEventListener("click", () => {
   // Hide the "Yes" button after it is clicked
   yesBtn.style.display = "none";
 
-  // Move the "No" button to the center of the screen
+  // Adjust "No" button to center it properly on all screen sizes
   noBtn.style.position = "absolute";
-  noBtn.style.top = "85";
+  noBtn.style.top = "85%";  // Keep it near the bottom of the screen
   noBtn.style.left = "50%";
   noBtn.style.transform = "translate(-50%, -50%)";  // Center the button
 });
@@ -28,14 +25,18 @@ noBtn.addEventListener("click", () => {
   window.location.href = "no.htm"; // Replace with your desired URL
 });
 
-noBtn.addEventListener("mouseover", () => {
-  const noBtnRect = noBtn.getBoundingClientRect();
-  const maxX = window.innerWidth - noBtnRect.width;
-  const maxY = window.innerHeight - noBtnRect.height;
+window.onload = function () {
+  if (localStorage.getItem('audioPlaying') === 'true') {
+    let savedTime = localStorage.getItem('audioCurrentTime');
+    var audio = document.getElementById('background-music');
+    audio.volume = 0.4;
 
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
+    if (savedTime && !isNaN(savedTime)) {
+      audio.currentTime = parseFloat(savedTime);
+    }
 
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
-});
+    audio.play();
+    localStorage.removeItem('audioPlaying');
+    localStorage.removeItem('audioCurrentTime');
+  }
+};

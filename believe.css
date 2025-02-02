@@ -106,7 +106,23 @@ button:hover {
 }
 
 /* Extra small mobile screens (portrait mode) */
+/* Adjust button placement for small screens */
 @media (max-width: 480px) {
+    .btn-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        width: 80%; /* Buttons should be wider on small screens */
+        font-size: 1em;
+    }
+
+    /* Ensure buttons are not too close to the edges */
+    .yes-btn, .no-btn {
+        margin: 10px 0;
+    }
+
     .wrapper {
         padding: 10px;
     }
@@ -121,5 +137,11 @@ button:hover {
 
     .gif {
         width: 90%;
+    }
+}
+
+@media (max-width: 320px) {
+    .wrapper {
+        max-width: 300px; /* Further limit the max width on very small screens */
     }
 }
