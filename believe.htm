@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message for You</title>
+    <link rel="stylesheet" href="believe.css"/>
+    <script src="believe.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <h2 class="question">Do you believe that na gawa ko itong flowers na to?</h2>
+        <img class="gif" alt="gif" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXdlMmJ0Z2pxMGFreDZueTB1c3FxcWszYjV2cHAwODc2bDZ3NGF1aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d7rvF20PqNuGKSQGhf/giphy.gif"/>
+        <div class="btn-group">
+            <button class="yes-btn">Yes</button>
+            <button class="no-btn">No</button>
+        </div>
+    </div>
+
+    <!-- Hidden background music -->
+    <audio autoplay loop style="display: none;" id="background-music">
+        <source src="18.MP3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>    
+
+    <script>
+        // On page load, check if audio state (volume, currentTime) is saved
+        window.onload = function () {
+            let audio = document.getElementById('background-music');
+            let savedTime = localStorage.getItem('audioCurrentTime');
+            let savedVolume = localStorage.getItem('audioVolume');
+            
+            // Set saved volume and time if they exist in localStorage
+            if (savedVolume) {
+                audio.volume = parseFloat(savedVolume);
+            }
+            if (savedTime && !isNaN(savedTime)) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+            
+            // Play the audio if it isn't already playing
+            if (audio.paused) {
+                audio.play();
+            }
+        };
+
+        // Before leaving the page, save the audio state (currentTime and volume)
+        window.onbeforeunload = function () {
+            let audio = document.getElementById('background-music');
+            
+            // Save only if audio is playing
+            if (!audio.paused) {
+                localStorage.setItem('audioCurrentTime', audio.currentTime);  // Save current time
+                localStorage.setItem('audioVolume', audio.volume);  // Save current volume
+            }
+        };
+
+        // Optional: Handle volume control via buttons (if needed)
+        const volumeDown = document.getElementById('volume-down');
+        const volumeUp = document.getElementById('volume-up');
+        const volumeSlider = document.getElementById('volume-slider');
+        
+        // Volume adjustment functionality
+        volumeSlider.addEventListener('input', (e) => {
+            let audio = document.getElementById('background-music');
+            audio.volume = e.target.value / 100;  // Adjust volume based on slider
+            localStorage.setItem('audioVolume', audio.volume);  // Save volume state
+        });
+
+        volumeDown.addEventListener('click', () => {
+            let audio = document.getElementById('background-music');
+            audio.volume = Math.max(0, audio.volume - 0.1);  // Decrease volume, but not below 0
+            volumeSlider.value = audio.volume * 100;  // Update slider position
+            localStorage.setItem('audioVolume', audio.volume);  // Save updated volume
+        });
+
+        volumeUp.addEventListener('click', () => {
+            let audio = document.getElementById('background-music');
+            audio.volume = Math.min(1, audio.volume + 0.1);  // Increase volume, but not above 1
+            volumeSlider.value = audio.volume * 100;  // Update slider position
+            localStorage.setItem('audioVolume', audio.volume);  // Save updated volume
+        });
+    </script>
+</body>
+</html>

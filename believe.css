@@ -1,0 +1,125 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px; /* Ensure some space on mobile screens */
+}
+
+/* Styling for the wrapper */
+.wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 480px; /* Set max width for better mobile layout */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Image for gif */
+.gif {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Question styling */
+h2 {
+    font-size: 1.5em;
+    color: #e94d58;
+    margin: 15px 0;
+}
+
+/* Button group styling */
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Button styling */
+button {
+    width: 45%; /* Make buttons take up 45% of the width each */
+    height: 50px;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px gray;
+    border: 2px solid #e94d58;
+    transition: transform 0.3s ease;
+}
+
+/* Yes button styling */
+button:nth-child(1) {
+    background: #e94d58;
+}
+
+/* No button styling */
+button:nth-child(2) {
+    background: white;
+    color: #e94d58;
+}
+
+/* Hover effect on buttons */
+button:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.3em; /* Reduce font size for mobile */
+    }
+    
+    /* Ensure buttons are well spaced */
+    .btn-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Make buttons stack on top of each other */
+    button {
+        width: 80%; /* Buttons are more narrow on mobile */
+        font-size: 1.1em;
+    }
+    
+    /* Reduce gif size */
+    .gif {
+        width: 80%; /* Limit gif size for mobile */
+        margin: 20px auto;
+    }
+}
+
+/* Extra small mobile screens (portrait mode) */
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+
+    button {
+        font-size: 1em; /* Slightly smaller text */
+    }
+
+    .gif {
+        width: 90%;
+    }
+}

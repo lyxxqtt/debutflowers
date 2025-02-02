@@ -1,53 +1,240 @@
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #message-container {
-    position: relative;
-  }
-  
-  #initial-message, #continue-message {
-    position: absolute;
-    top: -330px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    font-family: 'Courier New', monospace;
-    color: #ff6b6b;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: lovePulse 1.5s infinite;
-    z-index: 2;
-    text-align: center;
-    padding: 10px 20px;
-    border: 2px dashed #ffb6c1;
-    border-radius: 8px;
-    background-color: rgba(255, 240, 240, 0.8);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fce0d8; /* Soft pinkish background */
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+/* Letter container */
+.letter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Allow letter-container to take the remaining space */
+  background-image: url('https://www.transparenttextures.com/patterns/diamond-flax.png'); /* Soft texture for background */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Main letter styling */
+.letter {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for a soft feel */
+  width: 80%;
+  max-width: 800px;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); /* Blur effect for background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.letter:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+  box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Letter header */
+.header h1 {
+  font-size: 2.5rem;
+  color: #d9534f; /* Red color for romantic feel */
+  font-family: 'Brush Script MT', cursive;
+  margin: 0 0 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Content section */
+.content {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #6a4e23;
+  margin-bottom: 40px;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  color: #4a4a4a;
+}
+
+.content p {
+  margin: 10px 0;
+}
+
+.content p:first-child {
+  font-style: italic;
+}
+
+/* Footer section */
+.footer p {
+  font-size: 1rem;
+  color: #d9534f; /* Red color */
+  font-style: italic;
+  text-align: right;
+}
+
+/* Button Styling */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; /* Spacing for button */
+  background-color: #fce0d8; /* Soft background to match */
+}
+
+.continue-button {
+  background-color: #d9534f; /* Red color */
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.continue-button:hover {
+  background-color: #c9302c; /* Darker red when hovered */
+  transform: scale(1.05); /* Slight grow effect on hover */
+}
+
+/* Audio element hidden but still active */
+audio {
+  display: none;
+}
+
+/* Music control styling */
+.music-controls {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 10px; /* Position at the top of the page */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8); /* Slight background to make controls visible */
+  padding: 8px 15px; /* Reduced padding */
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Button styling for music control */
+.music-button {
+  background-color: #d9534f; /* Red color */
+  color: white;
+  padding: 8px 12px; /* Reduced padding */
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.music-button:hover {
+  background-color: #c9302c;
+}
+
+.volume-slider {
+  width: 100%; /* Full width of the available space */
+  max-width: 200px; /* Limit to a max width */
+  height: 5px; /* Thinner slider for smaller appearance */
+}
+
+/* Ensure the music controls don't overlap content */
+.letter-container {
+  padding-top: 80px; /* Give space for the music controls */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .music-controls {
+    flex-direction: row; /* Keep buttons in a row on mobile */
+    width: 80%; /* Adjust width for mobile */
+    padding: 6px 10px; /* Smaller padding */
   }
 
-  @keyframes lovePulse {
-    0%, 100% {
-      transform: translateX(-50%) scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: translateX(-50%) scale(1.1);
-      opacity: 0.8;
-    }
+  .music-button {
+    font-size: 0.8rem; /* Smaller button text */
+    padding: 6px 10px; /* Less padding for smaller buttons */
   }
 
-  #continue-message {
-    top: 20px;
-    font-size: 20px;
-    color: #2e8b57;
-    text-decoration: underline;
-    cursor: pointer;
+  .volume-slider {
+    width: 80%; /* Adjust slider size */
   }
+
+  /* Add some space below for the content */
+  .letter-container {
+    padding-top: 100px; /* Adjusted to give more room on mobile */
+  }
+}
+
+
+/* Media Queries for Responsiveness */
+
+/* Tablet and smaller screens */
+@media (max-width: 1024px) {
+  .letter {
+    width: 85%;
+    padding: 30px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .content {
+    font-size: 1.1rem;
+  }
+
+  .footer p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile screens (Phones) */
+@media (max-width: 768px) {
+  .letter-container {
+    padding: 10px;
+  }
+
+  .letter {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+
+/* Small mobile screens (Portrait mode, very small screens) */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+
+  .footer p {
+    font-size: 0.75rem;
+  }
+}

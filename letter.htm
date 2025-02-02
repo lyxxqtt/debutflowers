@@ -3,41 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="letter.css">
+  <script src="letter.js"></script>
   <title>Letter Page</title>
 </head>
 <body>
-  <h1>Welcome to the Letter Page</h1>
-  <p>This is the content of the second page.</p>
+  <div class="letter-container">
 
-  <!-- Audio element with autoplay, hidden, and volume set to 40% -->
+    <!-- Music Controls -->
+    <div class="music-controls">
+      <button id="volume-down" class="music-button">-</button>
+      <input type="range" id="volume-slider" class="volume-slider" value="40" max="100" step="1">
+      <button id="volume-up" class="music-button">+</button>
+      <button id="mute-btn" class="music-button">Mute</button>
+      <button id="pause-btn" class="music-button">Pause</button>
+    </div>
+
+    <!-- Letter Content -->
+    <div class="letter">
+      <div class="header">
+        <h1>Dear My Luna,</h1>
+      </div>
+      <div class="content">
+        <p>
+          I just wanna say, Happy Happy Happy Birthday sayo! Alam mo kung bakit tatlo yang happy? Syempre para happy ka lagi, hihi, emii. Kasi "I love you" talaga yan, my Luna. Wishing you that all of your dreams ay matupad, of course with me, hehe.
+        </p>
+        <p>
+          And don’t forget palagi na maging thankful sa mga nangyayari. Tas wishing you good health and less stress, of course! Yon lang, hehe. I love uu, my bebi!
+        </p>
+      </div>
+      <div class="footer">
+        <a href="believe.htm"> <p>Continue </p></a>
+      </div>    
+    </div>
+  </div>
+
+  <!-- Audio -->
   <audio autoplay loop style="display: none;" id="background-music">
-    <source src="18.MP3" type="audio/mpeg"> <!-- Replace with your audio file path -->
+    <source src="18.MP3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </body>
-<script>
-  window.onload = function() {
-    // Check if audio should continue playing based on localStorage
-    if (localStorage.getItem('audioPlaying') === 'true') {
-      // Get the saved current time from localStorage
-      let savedTime = localStorage.getItem('audioCurrentTime');
-      
-      // Get the audio element and set the volume to 40%
-      var audio = document.getElementById('background-music');
-      audio.volume = 0.4;
-      
-      // If the saved time is valid, resume from that point
-      if (savedTime && !isNaN(savedTime)) {
-        audio.currentTime = parseFloat(savedTime); // Set the audio to the saved time
-      }
-      
-      // Play the audio
-      audio.play();
-      
-      // Remove the flag and time from localStorage after handling
-      localStorage.removeItem('audioPlaying');
-      localStorage.removeItem('audioCurrentTime');
-    }
-  };
-</script>
 </html>
