@@ -7,25 +7,51 @@
     <link rel="stylesheet" href="no.css">
 </head>
 <body>
+    <div class="hearts">
+        <div class="hearts">
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+            <div class="heart">&hearts;</div>
+        </div>    
+    </div>    
+    <div class="heart-background"></div>
 
     <div class="container">
         <p id="text">Awh hindi kapala naniniwala ha</p>
+
+        <!-- Drive Logo -->
+        <div class="drive-logo-container">
+            <img src="Google-Drive-Logo.png" alt="Drive Logo" class="drive-logo">
+        </div>
+
         <button id="showVideoBtn">Click me</button>
 
         <div id="videoContainer" class="video-container">
             <div class="video-wrapper">
                 <video id="video" controls>
-                    <source src="flower-diy.mp4" type="video/mp4">
+                    <source src="flower-diy.mov" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
             <div class="download-container" id="downloadContainer" style="display: none;">
-                <a href="flower-diy.mp4" download>
+                <a href="flower-diy.mov" download>
                     <button class="download-btn">Download Video</button>
                 </a>
-            </div>
-            <div id="exitFullscreenBtn" class="exit-fullscreen-btn" style="display: none;">
-                <button onclick="exitFullscreen()">Exit Fullscreen</button>
             </div>
         </div>
     </div>
